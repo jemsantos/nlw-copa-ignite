@@ -160,7 +160,7 @@ export async function poolRoutes(fastify: FastifyInstance) {
     {
       onRequest: [authenticate],
     },
-    async (request) => {
+    async (request, reply) => {
       const getPoolParams = z.object({
         id: z.string(),
       });
@@ -197,6 +197,12 @@ export async function poolRoutes(fastify: FastifyInstance) {
           },
         },
       });
+
+      if (!pool) {
+        return reply.status(400).send({
+          message: "Pool not found",
+        });
+      }
 
       return { pool };
     }
