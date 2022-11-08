@@ -57,7 +57,9 @@ export function Pools() {
       >
         <Button
           title="BUSCAR BOLÃO POR CÓDIGO"
-          letIcon={<Icon as={Octicons} name="search" color="black" size="md" />}
+          leftIcon={
+            <Icon as={Octicons} name="search" color="black" size="md" />
+          }
           onPress={() => navigation.navigate("find")}
         />
       </VStack>
